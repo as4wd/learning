@@ -5,7 +5,7 @@ $mail = new PHPMailer;
 
 //$mail = new PHPMailer();
 
-$mail->SMTPDebug = 1;
+$mail->SMTPDebug = 0;
 
 $mail->isSMTP();
 $mail->SMTPAuth = true;
@@ -17,19 +17,18 @@ $mail->Password = 'sender123';
 
 $mail->From = 'aslan@ozcakir.com';
 $mail->FromName = 'Aslan OZCAKIR';
-$mail->addAddress('aozcakir@medyanova.com', 'aozcakir@medyanova.com');     // Add a recipient
-$mail->addAddress('aslan@agilone.com');               // Name is optional
+$mail->addAddress('aozcakir@medyanova.com', 'Aslan Medyanova');     // Add a recipient
+$mail->addAddress('aslan@agilone.com', 'Aslan Agilone');               // Name is optional
 $mail->addReplyTo('info@medyanova.com', 'Medyanova');
 $mail->addCC('aslanozcakir@hotmail.com');
 $mail->addBCC('aslanozcakir@gmail.com');
 
-$mail->SetFrom($mail->Username, 'Benim Adım');
-$mail->AddAddress('alici@adresi.com', 'Alıcının Adı');
+$mail->SetFrom($mail->Username, 'Test from PHPMailer');
 $mail->CharSet = 'UTF-8';
-$mail->Subject = 'Mail Başlığı';
-$mail->MsgHTML('Mailin içeriği!');
+$mail->Subject = 'Burasi konu - subject bolumu';
+$mail->MsgHTML('Mailin icerigi: test amacli email gonderimi');
 if($mail->Send()) {
-    echo 'Mail gönderildi!';
+    echo '<p>Mail gonderildi !';
 } else {
     echo 'Mail gönderilirken bir hata oluştu: ' . $mail->ErrorInfo;
 }
